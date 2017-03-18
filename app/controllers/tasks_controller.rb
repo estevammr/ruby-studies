@@ -9,6 +9,7 @@ class TasksController < ApplicationController
 
   def new 
     @task = Task.new
+    @task[:start_time] = Time.now
   end
 
   def edit
