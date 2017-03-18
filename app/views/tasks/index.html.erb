@@ -7,22 +7,24 @@
     <th>End time</th>
   </tr>
   <% @tasks.each do |task| %>
-    <% if task.finished_at == nil %>
-    <tr>
-      <td><%= task.subject %></td>
-      <td><%= task.start_time %></td>
-      <td><%= task.end_time ? task.end_time : 'No date' %></td>
-      <td><%= link_to 'Show', task_path(task) %></td>
-      <td><%= link_to 'Edit', edit_task_path(task) %></td>
-      <td><%= link_to 'Destroy', task_path(task),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %></td>
-      <td><%= link_to 'Finish', task_path(task), 
-              method: :update,
-              data: { confirm: 'Has it been finalized?' } %></td>
-    </tr>
+    <% if task.finished_at.nil? %>
+      <tr>
+        <td><%= task.subject %></td>
+        <td><%= task.start_time %></td>
+        <td><%= task.end_time ? task.end_time : 'No date' %></td>
+        <td><%= link_to 'Show', task_path(task) %></td>
+        <td><%= link_to 'Edit', edit_task_path(task) %></td>
+        <td><%= link_to 'Destroy', task_path(task),
+                method: :delete,
+                data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Finish', task_path(task), 
+                method: :update,
+                data: { confirm: 'Has it been finalized?' } %></td>
+      </tr>
     <% end %>
   <% end %>
 </table>
-
+    
+  <br>
 <%= link_to 'New Task', new_task_path %>
+<%= link_to 'Tasks finished', tasks_finished_path %>

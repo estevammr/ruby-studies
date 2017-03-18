@@ -1,0 +1,20 @@
+<h1>Listing tasks finished</h1>
+ 
+<table>
+  <tr>
+    <th>Subject</th>
+    <th>Start time</th>
+    <th>End time</th>
+    <th>Finish<th>
+  </tr>
+  <% @tasks.each do |task| %>
+    <tr>
+      <td><%= task.subject %></td>
+      <td><%= task.start_time %></td>
+      <td><%= task.end_time ? task.end_time : 'No date' %></td>
+      <td><%= task.finished_at %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to 'Back', tasks_path %>

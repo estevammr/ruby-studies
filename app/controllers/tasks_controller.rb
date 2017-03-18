@@ -51,6 +51,10 @@ class TasksController < ApplicationController
     redirect_to tasks_path
   end
 
+  def tasks_finished 
+    @tasks = Task.all
+  end
+
   private
     def task_params
       params.require(:task).permit(:subject, :start_time, :end_time, :finished_at)
