@@ -43,9 +43,17 @@ class TasksController < ApplicationController
     redirect_to tasks_path
   end
 
+  def finish_task
+    @task = Task.find(params[:id])
+    @task[:finished_at] = Time.current
+    @task.save
+
+    redirect_to tasks_path
+  end
+
   private
     def task_params
-      params.require(:task).permit(:subject, :start_time, :end_time)
+      params.require(:task).permit(:subject, :start_time, :end_time, :finished_at)
     end
 
 end
