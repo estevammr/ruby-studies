@@ -8,12 +8,14 @@
     <th>Finish<th>
   </tr>
   <% @tasks.each do |task| %>
-    <tr>
-      <td><%= task.subject %></td>
-      <td><%= task.start_time %></td>
-      <td><%= task.end_time ? task.end_time : 'No date' %></td>
-      <td><%= task.finished_at %></td>
-    </tr>
+    <% if !task.finished_at.nil? %>
+      <tr>
+        <td><%= task.subject %></td>
+        <td><%= task.start_time %></td>
+        <td><%= task.end_time ? task.end_time : 'No date' %></td>
+        <td><%= task.finished_at %></td>
+      </tr>
+    <% end %>
   <% end %>
 </table>
 
