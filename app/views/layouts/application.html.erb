@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Studies time tracker</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -27,6 +28,9 @@
       <% else %>
         <li>
           <%= link_to('Login', new_user_session_path)  %>
+        </li>
+        <li>
+          <%= link_to('Sign up', new_user_registration_path)  %>
         </li>
        <% end %>
     </ul>
