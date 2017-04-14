@@ -16,20 +16,20 @@
 
   <p>
     <%= f.label :subject %><br>
-    <%= f.text_field :subject %>
+    <%= f.text_field :subject, :class => "form-control" %>
   </p>
  
   <p>
     <%= f.label :start_time %><br>
-    <%= datetime_local_field(:task, :start_time) %>
+    <%= datetime_local_field(:task, :start_time, :class => "form-control") %>
   </p>
 
   <p>
     <%= f.label :end_time %><br>
-    <%= datetime_local_field(:task, :end_time) %>
+    <%= datetime_local_field(:task, :end_time, :class => "form-control") %>
   </p>
  
   <p>
-    <%= f.submit %>
+    <%= f.submit :class => "btn btn-primary" %>
   </p>
 <% end %>
