@@ -1,0 +1,24 @@
+<%= form_for ([@task, @hour]) do |f| %>
+
+  <% if @hour.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@hour.errors.count, "error") %> prohibited
+        this hour from being saved:
+      </h2>
+      <ul>
+        <% @hour.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.hidden_field :task_id, :value=>params[:task_id] %>
+  <p>
+    <%= f.label :quantity %><br>
+    <%= f.text_field :quantity, :class => "form-control" %>
+  </p>
+  <p>
+    <%= f.submit :class => "btn btn-primary" %>
+  </p>
+<% end %>
