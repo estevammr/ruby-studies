@@ -2,7 +2,7 @@ class EventsController < ApplicationController
 
   def index
     @task = Task.all
-    @events = Event.all
+    @events = Event.where(task_id: params[:task_id])
   end
 
   def new
