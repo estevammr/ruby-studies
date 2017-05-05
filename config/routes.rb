@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   
   authenticated :user do
     resources :tasks do
-      resources :hours
+      resources :events
     end
     match '/tasks/:id', to: 'tasks#finish_task', as: 'finish_task', via: 'post'
     get '/tasks_finished', to: 'tasks#tasks_finished', as: 'tasks_finished'
@@ -11,5 +11,4 @@ Rails.application.routes.draw do
   end
   
   root to: redirect('/users/sign_in')
-
 end

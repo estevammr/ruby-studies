@@ -3,5 +3,5 @@ class Task < ApplicationRecord
                       length: { minimum: 5 }
   validates :start_time, presence: true
 
-  has_many :hours
+  has_many :events
 end
