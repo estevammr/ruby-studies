@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   def index 
-    @tasks = Task.all
+    @tasks = current_user.tasks
   end
 
   def show
@@ -8,7 +8,7 @@ class TasksController < ApplicationController
   end
 
   def new
-    @task = Task.new
+    @task = current_user.tasks.new
     @task[:start_time] = Time.now
   end
 
@@ -17,7 +17,7 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(task_params)
+    @task = current_user.tasks.new(task_params)
 
     if @task.save
       redirect_to @task
@@ -27,10 +27,10 @@ class TasksController < ApplicationController
   end
 
   def update
-    @task = Task.find(params[:id])
+    @task = current_user.tasks
 
     if @task.update(task_params)
-      redirect_to @task
+      redirect_to tasks_path
     else
       render 'edit'
     end
@@ -52,7 +52,7 @@ class TasksController < ApplicationController
   end
 
   def tasks_finished 
-    @tasks = Task.all
+    @tasks = current_user.tasks
   end
 
   private

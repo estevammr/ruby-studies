@@ -4,4 +4,5 @@ class Task < ApplicationRecord
   validates :start_time, presence: true
 
   has_many :events
+  belongs_to :user
 end
