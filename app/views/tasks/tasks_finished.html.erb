@@ -1,6 +1,7 @@
 <h1>Listing tasks finished</h1>
- 
-<table class="table table-hover">
+
+<div class="table-responsive">
+<table class="table">
   <tr>
     <th>Subject</th>
     <th>Start time</th>
@@ -18,5 +19,5 @@
     <% end %>
   <% end %>
 </table>
-
+</div>
 <%= link_to 'Back', tasks_path, :class => "btn btn-default" %>
