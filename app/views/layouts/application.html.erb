@@ -25,18 +25,20 @@
     <div class="collapse navbar-collapse" id="navbar-role">
     <ul class="nav navbar-nav navbar-right">
       <% if user_signed_in? %>
+        <% if current_user.admin_role? %>
+          <li>
+            <%= link_to 'Sign up', new_user_registration_path %>
+          </li>
+        <% end %>
         <li>
-          <%= link_to 'Perfil', edit_user_registration_path %>
+          <%= link_to 'Profile', edit_user_registration_path %>
         </li>
         <li>
-          <%= link_to('Sign up', new_user_registration_path)  %>
-        </li>
-        <li>
-          <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+          <%= link_to 'Logout', destroy_user_session_path, :method => :delete %>
         </li>
       <% else %>
         <li>
-          <%= link_to('Login', new_user_session_path)  %>
+          <%= link_to 'Login', new_user_session_path %>
         </li>
        <% end %>
     </ul>

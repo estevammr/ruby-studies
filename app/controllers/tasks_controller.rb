@@ -1,6 +1,11 @@
 class TasksController < ApplicationController
+  load_and_authorize_resource
   def index 
-    @tasks = current_user.tasks
+    if current_user.admin_role?
+      @tasks = Task.all
+    else
+      @tasks = current_user.tasks
+    end
   end
 
   def show

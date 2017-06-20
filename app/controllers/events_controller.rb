@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-
+  load_and_authorize_resource
   def index
     @task = Task.all
     @events = Event.where(task_id: params[:task_id])

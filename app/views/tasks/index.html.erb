@@ -8,8 +8,10 @@
     <th>End time</th>
     <th>Show task</th>
     <th>Edit task</th>
-    <th>Delete task</th>
-    <th>Finish task</th>
+    <% if current_user.admin_role? %>
+      <th>Delete task</th>
+      <th>Finish task</th>
+    <% end %>
     <th>Events</th>
   </tr>
   <% @tasks.each do |task| %>
@@ -20,14 +22,16 @@
         <td><%= task.end_time ? task.end_time : 'No date' %></td>
         <td><%= link_to 'Show', task_path(task), :class => "btn btn-warning" %></td>
         <td><%= link_to 'Edit', edit_task_path(task), :class => "btn btn-primary" %></td>
-        <td><%= link_to 'Delete', task_path(task),
-                :class => "btn btn-danger",
-                method: :delete,
-                data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to 'Finish', task_path(task), 
-                :class => "btn btn-default",
-                method: :update,
-                data: { confirm: 'Has it been finalized?' } %></td>
+         <% if current_user.admin_role? %>
+          <td><%= link_to 'Delete', task_path(task),
+                  :class => "btn btn-danger",
+                  method: :delete,
+                  data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Finish', task_path(task), 
+                  :class => "btn btn-default",
+                  method: :update,
+                  data: { confirm: 'Has it been finalized?' } %></td>
+        <% end %>
         <td><%= link_to 'Events', task_events_path(task), :class => "btn btn-warning" %></td>
       </tr>
     <% end %>
@@ -36,4 +40,6 @@
 </div>  
   <br>
 <%= link_to 'New Task', new_task_path, :class => "btn btn-primary" %>
-<%= link_to 'Tasks finished', tasks_finished_path, :class => "btn btn-default" %>
+<% if can? :tasks_finished, Task %>
+  <%= link_to 'Tasks finished', tasks_finished_path, :class => "btn btn-default" %>
+<% end %>
